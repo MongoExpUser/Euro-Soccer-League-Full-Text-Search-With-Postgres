@@ -7,7 +7,13 @@ Full-Text Search Demo with PostgreSQL
 <br><br>
 
 
-The  SQL scripts in this repo shows simple demonstration of full-text search with PostgreSQL using sample European Soccer League dataset.
+1) The  SQL scripts in this repo shows simple demonstration of full-text search with PostgreSQL using sample European Soccer League dataset.
+
+2) The scripts can be run via:
+
+  - Postgres shell (psql) directly.
+                                                                                                                                                 
+  - The PostgreSQLApp.java source file is this repo after it has been compileed to a class. 
                                                                                                                                                  
 
 # License
