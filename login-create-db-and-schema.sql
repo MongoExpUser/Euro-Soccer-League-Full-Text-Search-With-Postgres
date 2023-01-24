@@ -10,5 +10,5 @@ CREATE SCHEMA IF NOT EXISTS league AUTHORIZATION postgres;
 \c euro
 
 -- set and show schema/path
-SET search_path TO soccer, public;
+SET search_path TO league, public;
 SHOW search_path;
