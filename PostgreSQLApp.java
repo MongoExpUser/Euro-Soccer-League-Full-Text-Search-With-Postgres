@@ -43,7 +43,7 @@ public class PostgreSQLApp
             
             if(conn instanceof Connection)
             {
-              System.out.println("Successfully connected to Aurora PostgreSQL Serverless Cluster.");
+              System.out.println("Successfully connected to PostgreSQL server.");
               
               // run this  query to set schema/path
               String querySetSchema = "SET search_path TO " + schemaName + ", public";
