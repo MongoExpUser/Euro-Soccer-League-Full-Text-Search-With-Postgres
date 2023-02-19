@@ -19,7 +19,7 @@ SELECT * FROM soccer WHERE search_vector_team_name @@ ( to_tsquery('manchester')
 SELECT * FROM soccer WHERE search_vector_team_name @@ ( to_tsquery('manchester') || plainto_tsquery('premier league') );
 
 
--- perform more complicate seach with the @@, ||, AND and OR operators, and the to_tsquery and plainto_tsquery functions
+-- perform more complicated search with the @@, ||, AND and OR operators, and the to_tsquery and plainto_tsquery functions
 SELECT * FROM soccer
   WHERE search_vector_team_name @@ ( to_tsquery('manchester') )
   AND search_vector_league @@ ( plainto_tsquery('premier league') );
