@@ -11,7 +11,7 @@ SELECT * FROM soccer WHERE search_vector_team_name @@ plainto_tsquery('liverpool
 SELECT team_name FROM soccer WHERE search_vector_league @@ plainto_tsquery('premier league');
 SELECT *  FROM soccer WHERE search_vector_league @@ plainto_tsquery('premier league');
 
--- use the @@ operator and the to_tsquery and plain_to_tsquery functions, to search for a word and a phrase, respetcively
+-- use the @@ operator and the to_tsquery and plain_to_tsquery functions, to search for a word and a phrase, respectively
 -- and then combine both with the && and || operators to search for multiple words amd phrases:
 SELECT team_name FROM soccer WHERE search_vector_team_name @@ (to_tsquery('manchester') && to_tsquery('liver'));
 SELECT * FROM soccer WHERE search_vector_team_name @@ ( to_tsquery('manchester') || to_tsquery('liver') );
