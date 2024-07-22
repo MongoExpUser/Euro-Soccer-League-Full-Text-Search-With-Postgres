@@ -1,5 +1,5 @@
 -- login, create database, create schema, and set path
--- all command=s form postgres shell
+-- all commands from postgres shell
 
 -- login on Ubuntu : sudo -u postgres psql -d postgres
 -- login on MacOS  : psql -d postgres
