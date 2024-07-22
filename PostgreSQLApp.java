@@ -54,7 +54,7 @@ public class PostgreSQLApp
               String [] queryList = new String[2];
               queryList[0] = querySetSchema;
               queryList[1] = queryVersion;
-              // add other queries from the repo and expand the list as define in queryList above
+              // add other queries from the repo and expand the list as defined in the queryList above
           
               for(int index = 0; index < queryList.length; index++)
               {
