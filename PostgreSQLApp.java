@@ -27,7 +27,7 @@ import java.util.Properties;
 
 public class PostgreSQLApp
 {
-    public void connect(String host, String dbName, String schemaName, String url, String user, String password, String sslrootcertPath) throws SQLException, ClassNotFoundException
+    public void connectAndRunQueries(String host, String dbName, String schemaName, String url, String user, String password, String sslrootcertPath) throws SQLException, ClassNotFoundException
     {
         Properties props = new Properties();
         props.setProperty("user", user);
@@ -97,6 +97,6 @@ public class PostgreSQLApp
         String password = "password";
         String sslrootcertPath = "/path/to/root-cert.pem";
         PostgreSQLApp app = new PostgreSQLApp();
-        app.connect(host, dbName, schemaName, url, user, password, sslrootcertPath);
+        app.connectAndRunQueries(host, dbName, schemaName, url, user, password, sslrootcertPath);
     }
 }
