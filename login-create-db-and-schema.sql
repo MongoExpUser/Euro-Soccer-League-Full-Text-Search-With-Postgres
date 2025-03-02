@@ -1,4 +1,4 @@
--- login, create database, create schema, and set path
+-- login, create database, create schema and set path
 -- all commands from postgres shell
 
 -- login on Ubuntu : sudo -u postgres psql -d postgres
