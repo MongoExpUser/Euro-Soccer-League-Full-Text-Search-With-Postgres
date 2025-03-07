@@ -35,25 +35,32 @@ public class PostgreSQLApp
         props.setProperty("ssl", "true");
         props.setProperty("sslmode", "verify-ca");  // "verify-full" || "verify-ca" || disable	|| "allow" || prefer	|| "require"	
         props.setProperty("sslrootcert", sslrootcertPath);
-        Connection conn = DriverManager.getConnection(url, props);
+        Integer statementTimeout = 60000;
+        String options = String.format("-c search_path=%s,public -c statement_timeout=%s", schemaName, statementTimeout);
+        props.setProperty("options", options);
         
         try
         {
-            conn = DriverManager.getConnection(url, user, password);
+            // conn = DriverManager.getConnection(url, user, password);
+            Connection conn = DriverManager.getConnection(url, props);
             
             if(conn instanceof Connection)
             {
               System.out.println("Successfully connected to PostgreSQL server.");
               
-              // run this  query to set schema/path
-              String querySetSchema = "SET search_path TO " + schemaName + ", public";
-              
               // then add queries to run
-              String queryVersion = "SELECT VERSION()";
+              String query0 = "SELECT datname, usename, ssl, client_addr FROM pg_stat_ssl JOIN pg_stat_activity ON pg_stat_ssl.pid = pg_stat_activity.pid;";
+              String query1 = "SELECT VERSION()"; 
+              String query2 = "SELECT * FROM pg_stat_ssl ORDER BY ssl;";   
+              String query3 = "SELECT * FROM league.soccer LIMIT 5;";  
+
+                  
               Statement st = conn.createStatement();
-              String [] queryList = new String[2];
-              queryList[0] = querySetSchema;
-              queryList[1] = queryVersion;
+              String [] queryList = new String[4];
+              queryList[0] = query0;
+              queryList[1] = query1;
+              queryList[2] = query2;
+              queryList[3] = query3;
               // add other queries from the repo and expand the list as defined in the queryList above
           
               for(int index = 0; index < queryList.length; index++)
@@ -91,8 +98,9 @@ public class PostgreSQLApp
     {
         String host = "host";
         String dbName = "euro";
-        String schemaName = "soccer";
-        String url = "jdbc:postgresql://" + host + '/' + dbName;
+        String schemaName = "league";
+        String engineName = "postgresql";
+        String url = String.format("jdbc:%s://%s/%s", engineName, host, dbName);
         String user = "user";
         String password = "password";
         String sslrootcertPath = "/path/to/root-cert.pem";
